@@ -2,7 +2,18 @@ import React, {ReactElement, useCallback, useEffect, useState} from "react";
 import axios from 'axios';
 import CardTemplate from "../Template/CardTemplate";
 
-const ListTrekFeature: React.ComponentType = () => {
+interface Props {
+    dataToSend: any;
+    loadData: boolean;
+    setLoadData: (loadData:boolean) => (void);
+}
+
+const ListTrekFeature: React.ComponentType<Props> = (
+    {
+        dataToSend,
+        loadData,
+        setLoadData
+    }) => {
 
     /*******************************************************************************************************************
      *                                          STATE
@@ -40,17 +51,21 @@ const ListTrekFeature: React.ComponentType = () => {
      ******************************************************************************************************************/
 
     useEffect(() => {
-        axios
-            .get("http://localhost:1030/api/list-trek", {
-                params: {
-                  isEnabled : false
-                }
-            })
-            .then(response => {
-                setListData(response.data);
-            });
-
-    }, [])
+        console.log(dataToSend);
+        if(loadData) {
+            axios
+                .get("http://localhost:1030/api/treks", {
+                    params: {
+                        isEnabled: true,
+                        ...dataToSend
+                    }
+                })
+                .then(response => {
+                    setListData(response.data);
+                });
+            setLoadData(false);
+        }
+    }, [loadData, dataToSend, setLoadData]);
 
     useEffect(() => {
         setBody(generateListViewFunc(listData));
