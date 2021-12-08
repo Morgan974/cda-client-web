@@ -1,4 +1,5 @@
 import React from "react";
+import BadgeLevelElement from "../Elements/BadgeElement";
 
 interface Props {
     className?: string;
@@ -16,8 +17,10 @@ const CardTemplate: React.ComponentType<Props> = (
     return (
         <div className={className}>
             <div className={"card m-1 " + classNameChildren}>
-                <div className="card-block-header row">
-                    {parameters.level}
+                <div className="card-block-header">
+                    <BadgeLevelElement
+                        text={parameters.level}
+                    />
                 </div>
                 <div className="card-block-body row">
                     <div className="col-md-12 text-center pb-4">

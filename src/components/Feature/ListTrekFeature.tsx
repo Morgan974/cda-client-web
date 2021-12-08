@@ -51,7 +51,6 @@ const ListTrekFeature: React.ComponentType<Props> = (
      ******************************************************************************************************************/
 
     useEffect(() => {
-        console.log(dataToSend);
         if(loadData) {
             axios
                 .get("http://localhost:1030/api/treks", {

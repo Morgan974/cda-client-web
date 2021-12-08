@@ -38,7 +38,7 @@ const SelectAbstract: React.ComponentType<Props> = ({
 
       return (
           <select className="form-control" id="searchType" onChange={ e => onChange(e) } value={element}>
-             <option value={undefined} />
+             <option className="select-text-default" value={undefined} />
              {viewToDisplay}
           </select>
       )

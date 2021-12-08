@@ -120,5 +120,36 @@
     border-bottom: 1px solid grey;
     display: flex;
     align-items: center;
-    padding: 20px 0;
+    padding: 40px 0;
+}
+
+.block-search {
+    background-color: #83C9AB;
+    border-radius: 10px 0 10px 0;
+    padding: 15px;
+    border: 1px solid grey;
+}
+
+select {
+    text-transform: capitalize;
+}
+
+.select-text-default {
+    color: grey;
+}
+
+.card-block-header {
+    position: relative;
+}
+
+.badge {
+    background-color: lightgray;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: -1px;
+    padding: 5px;
+    border: 1px grey solid;
+    color: grey;
+    font-size: 10px;
 }

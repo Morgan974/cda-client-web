@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {ReactElement, useEffect, useState} from "react";
 import InputSelectElement from "../Elements/InputSelectElement";
 
 interface Props {
@@ -33,11 +33,13 @@ const SearchListTrekFeature: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     return (
-        <InputSelectElement
-            element={level}
-            setElement={setLevel}
-            label="Difficulté"
-        />
+        <div className="block-search">
+            <InputSelectElement
+                element={level}
+                setElement={setLevel}
+                label="Difficulté"
+            />
+        </div>
     )
 };
 
