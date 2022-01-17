@@ -1,5 +1,6 @@
 import React from "react";
 import BadgeLevelElement from "../Elements/BadgeElement";
+import BtnMenueElement from "../Elements/BtnMenuelement";
 
 interface Props {
     className?: string;
@@ -34,9 +35,11 @@ const CardTemplate: React.ComponentType<Props> = (
                     </div>
                 </div>
                 <div className="card-block-footer row">
-                    <button className="btn btn-view">
-                        Detail
-                    </button>
+                    <BtnMenueElement
+                        className="btn-view"
+                        nameMenu={"Détail"}
+                        path={"/trek/" + parameters.id}
+                    />
                 </div>
             </div>
         </div>

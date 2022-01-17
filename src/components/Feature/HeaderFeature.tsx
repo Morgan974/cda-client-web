@@ -8,7 +8,7 @@ function HeaderFeature() {
                     <div className="background-header" />
                 </div>
                 <TitleElement
-                    title="Les balades"
+                    title="Les balad'a claire"
                     className="title-position-header"
                 />
             </div>
