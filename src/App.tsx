@@ -9,7 +9,6 @@ import ViewTrekPage from "./components/Page/ViewTrekPage";
 function App() {
   return (
       <>
-        {/*<Application />*/}
         <Routes>
             <Route path="/list-trek" element={<ListTrekPage />} />
             <Route path="/list-group-trek" element={<ListGroupTrekPage />} />

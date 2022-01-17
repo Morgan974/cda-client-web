@@ -11,7 +11,7 @@ const ListTrekPage: React.ComponentType = () => {
      *                                          STATE
      ******************************************************************************************************************/
 
-    const [dataToSend, setDataToSend] = useState<any>({});
+    const [dataToSend, setDataToSend] = useState<any>();
     const [loadData, setLoadData] = useState<boolean>(false);
 
     /*******************************************************************************************************************

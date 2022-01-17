@@ -15,7 +15,7 @@ const LabelAbstract: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     return (
-        <div className={className}>
+        <div className={"label " + className}>
             {label}
         </div>
     )

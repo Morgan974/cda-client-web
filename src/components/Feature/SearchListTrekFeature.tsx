@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import InputSelectElement from "../Elements/InputSelectElement";
+import CheckboxSelectLevelFeature from "./CheckboxSelectLevelFeature";
 
 interface Props {
     setDataToSend : (dataToSend : any) => (void);
@@ -15,18 +15,18 @@ const SearchListTrekFeature: React.ComponentType<Props> = ({
      *                                          State
      ******************************************************************************************************************/
 
-    const [level, setLevel] = useState<string|undefined>(undefined);
+    const [levels, setLevels] = useState<number[]|undefined>([]);
 
     /*******************************************************************************************************************
      *                                          EFFECT
      ******************************************************************************************************************/
 
     useEffect(() => {
-        setDataToSend({
-            idLevel : level?level:undefined
-        })
+        setDataToSend(
+            levels ? levels : undefined
+        )
         setLoadData(true);
-    }, [setDataToSend, level, setLoadData])
+    }, [setDataToSend, levels, setLoadData])
 
     /*******************************************************************************************************************
      *                                          RENDER
@@ -34,9 +34,8 @@ const SearchListTrekFeature: React.ComponentType<Props> = ({
 
     return (
         <div className="block-search">
-            <InputSelectElement
-                element={level}
-                setElement={setLevel}
+            <CheckboxSelectLevelFeature
+                setElements={setLevels}
                 label="Difficulté"
             />
         </div>

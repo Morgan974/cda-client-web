@@ -1,14 +1,12 @@
 import React, {ReactElement, useCallback, useEffect, useState} from "react";
 
 interface Props {
-   element : any;
-   setElement : any;
+   setElements : any;
    listElements: any;
 }
 
-const SelectAbstract: React.ComponentType<Props> = ({
-   element,
-   setElement,
+const CheckboxAbstract: React.ComponentType<Props> = ({
+   setElements,
    listElements,
 }) => {
 
@@ -17,31 +15,25 @@ const SelectAbstract: React.ComponentType<Props> = ({
     ******************************************************************************************************************/
 
    const [body, setBody] = useState<ReactElement>(<></>);
+   const [tmpData, setTmpData] = useState<number[]>([]);
 
    /*******************************************************************************************************************
     *                                          CALLBACK
     ******************************************************************************************************************/
 
    const onChange = useCallback((e:any) => {
-      setElement(e.target.value);
-   }, [setElement]);
+       if (e.target.checked) {
+           setTmpData([...tmpData, parseInt(e.target.value)]);
+       } else {
+           setTmpData(tmpData.filter((id) => id !== parseInt(e.target.value)));
+       }
+   }, [tmpData]);
 
-   const generateLevelSelectViewFunc = useCallback((list: any) => {
-      let viewToDisplay:ReactElement;
-
-      viewToDisplay = list.map((e : any) => {
-         return (
-             <option value={e.id}>{e.level}</option>
-         )
-      })
-
-      return (
-          <select className="form-control" id="searchType" onChange={ e => onChange(e) } value={element}>
-             <option className="select-text-default" value={undefined} />
-             {viewToDisplay}
-          </select>
-      )
-   }, [element, onChange])
+   useEffect(() => {
+       setElements(
+           tmpData
+       )
+   }, [setElements, tmpData])
 
    /*******************************************************************************************************************
     *                                          EFFECT
@@ -49,9 +41,20 @@ const SelectAbstract: React.ComponentType<Props> = ({
 
    useEffect(() => {
       if (listElements?.length > 1) {
-         setBody(generateLevelSelectViewFunc(listElements));
+         setBody(
+             listElements.map((e : any) => {
+                return (
+                     <div className="form-check" key={e.id}>
+                         <input className="form-check-input" type="checkbox" value={e.id} name={e.level} id="flexCheckDefault" onChange={ e => onChange(e) } />
+                         <label className="form-check-label first-letter-capitalize" htmlFor="flexCheckDefault">
+                             {e.level}
+                         </label>
+                     </div>
+                )
+             })
+         );
       }
-   }, [listElements, generateLevelSelectViewFunc])
+   }, [listElements, onChange])
 
    /*******************************************************************************************************************
     *                                          RENDER
@@ -64,4 +67,4 @@ const SelectAbstract: React.ComponentType<Props> = ({
    )
 };
 
-export default SelectAbstract;
+export default CheckboxAbstract;

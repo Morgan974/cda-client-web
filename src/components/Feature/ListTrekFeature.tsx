@@ -52,11 +52,12 @@ const ListTrekFeature: React.ComponentType<Props> = (
 
     useEffect(() => {
         if(loadData) {
+            console.log("dataToSend", dataToSend);
             axios
                 .get("http://localhost:1030/api/treks", {
                     params: {
                         isEnabled: true,
-                        ...dataToSend
+                        idLevels : dataToSend
                     }
                 })
                 .then(response => {
