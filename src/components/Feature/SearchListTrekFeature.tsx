@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import CheckboxSelectLevelFeature from "./CheckboxSelectLevelFeature";
+import SliderPriceFeature from "./SliderPriceFeature";
 
 interface Props {
     setDataToSend : (dataToSend : any) => (void);
@@ -16,17 +17,19 @@ const SearchListTrekFeature: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     const [levels, setLevels] = useState<number[]|undefined>([]);
+    const [price, setPrices] = useState<number|undefined>();
 
     /*******************************************************************************************************************
      *                                          EFFECT
      ******************************************************************************************************************/
 
     useEffect(() => {
-        setDataToSend(
-            levels ? levels : undefined
-        )
+        setDataToSend({
+            idLevels : levels ? levels : undefined,
+            price : price ? price : undefined
+        })
         setLoadData(true);
-    }, [setDataToSend, levels, setLoadData])
+    }, [setDataToSend, levels, setLoadData, price])
 
     /*******************************************************************************************************************
      *                                          RENDER
@@ -38,6 +41,12 @@ const SearchListTrekFeature: React.ComponentType<Props> = ({
                 setElements={setLevels}
                 label="Difficulté"
             />
+            <div className="pt-3">
+                <SliderPriceFeature
+                    setElements={setPrices}
+                    label="Prix"
+                />
+            </div>
         </div>
     )
 };

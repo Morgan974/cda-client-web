@@ -57,7 +57,7 @@ const ListTrekFeature: React.ComponentType<Props> = (
                 .get("http://localhost:1030/api/treks", {
                     params: {
                         isEnabled: true,
-                        idLevels : dataToSend
+                        ...dataToSend
                     }
                 })
                 .then(response => {

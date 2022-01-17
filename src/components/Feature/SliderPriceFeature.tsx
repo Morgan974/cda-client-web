@@ -1,48 +1,47 @@
-import React, {useEffect, useState} from "react";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
 import LabelAbstract from "../Abstract/LabelAbstract";
-import axios from "axios";
-import CheckboxAbstract from "../Abstract/CheckboxAbstract";
+import {useCallback, useEffect} from "react";
 
 interface Props {
-    setElements : any;
-    label?: string;
+    setElements: any;
+    label: string;
     classNameLabel?: string;
 }
 
-const CheckboxSelectLevelFeature: React.ComponentType<Props> = ({
+const SliderPriceFeature: React.ComponentType<Props> = ({
     setElements,
     label,
     classNameLabel
 }) => {
 
+    function valuetext (value : any) {
+        return `${value}`;
+    }
+
     /*******************************************************************************************************************
      *                                          state
      ******************************************************************************************************************/
 
-    const [loadData, setLoadData] = useState<boolean>(false);
-    const [listElements, setListElements] = useState<[]>([]);
+    const [value, setValue] = React.useState<number>(12000);
 
     /*******************************************************************************************************************
-     *                                          effect
+     *                                          callback
      ******************************************************************************************************************/
 
-    useEffect(() => {
-        setLoadData(true);
-    }, [setLoadData]);
+    const handleSliderChange = useCallback((event : any, newValue : any) => {
+        setValue(newValue);
+    }, [setValue]);
 
     useEffect(() => {
-        if(loadData) {
-            axios
-                .get("http://localhost:1030/api/levels")
-                .then(response => {
-                    setListElements(response.data);
-                });
-            setLoadData(false);
-        }
-    }, [loadData, setLoadData, listElements]);
+        setElements(
+            value
+        )
+    }, [setElements, value]);
 
     /*******************************************************************************************************************
-     *                                          RENDER
+     *                                          render
      ******************************************************************************************************************/
 
     return (
@@ -53,14 +52,20 @@ const CheckboxSelectLevelFeature: React.ComponentType<Props> = ({
                     className={classNameLabel}
                 />
             }
-            {listElements &&
-                <CheckboxAbstract
-                    setElements={setElements}
-                    listElements={listElements}
+            <Box className="px-3">
+                <Slider
+                    className="color-black"
+                    getAriaLabel={() => 'price'}
+                    value={value}
+                    onChangeCommitted={handleSliderChange}
+                    valueLabelDisplay="auto"
+                    getAriaValueText={valuetext}
+                    min={120}
+                    max={12000}
                 />
-            }
+            </Box>
         </>
-    )
-};
+    );
+}
 
-export default CheckboxSelectLevelFeature;
+export default SliderPriceFeature;

@@ -33,7 +33,7 @@ const CheckboxAbstract: React.ComponentType<Props> = ({
        setElements(
            tmpData
        )
-   }, [setElements, tmpData])
+   }, [setElements, tmpData]);
 
    /*******************************************************************************************************************
     *                                          EFFECT

@@ -214,6 +214,19 @@ select {
 .label {
     font-weight: 500;
     font-size: 18px;
-    margin-bottom: 5px
-;
+    margin-bottom: 5px;
+}
+
+.color-black {
+    color : #17331B !important;
+}
+
+.MuiSlider-valueLabel {
+    background-color: #17331B !important;
+    color: white !important;
+}
+
+.MuiSlider-valueLabelOpen {
+    background-color: #17331B !important;
+    color: white !important;
 }
