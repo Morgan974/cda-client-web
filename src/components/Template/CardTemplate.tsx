@@ -22,6 +22,7 @@ const CardTemplate: React.ComponentType<Props> = (
                 <div className="card-block-header">
                     <BadgeLevelElement
                         text={parameters.level}
+                        className="badge-position-card"
                     />
                     <PriceElement
                         price={parameters.price}

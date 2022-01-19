@@ -16,7 +16,7 @@ const SearchListTrekFeature: React.ComponentType<Props> = ({
      *                                          State
      ******************************************************************************************************************/
 
-    const [levels, setLevels] = useState<number[]|undefined>([]);
+    const [levels, setLevels] = useState<string[]|undefined>([]);
     const [price, setPrices] = useState<number|undefined>();
 
     /*******************************************************************************************************************

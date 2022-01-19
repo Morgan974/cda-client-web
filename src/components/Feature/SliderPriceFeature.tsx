@@ -60,6 +60,7 @@ const SliderPriceFeature: React.ComponentType<Props> = ({
                     onChangeCommitted={handleSliderChange}
                     valueLabelDisplay="auto"
                     getAriaValueText={valuetext}
+                    step={100}
                     min={120}
                     max={12000}
                 />

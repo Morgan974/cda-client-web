@@ -1,5 +1,5 @@
 .body-layout {
-    background-color: white;
+    background-color: #F7F7F7;
     color: white;
 }
 
@@ -112,6 +112,7 @@
 .btn-view:hover, .btn-view:focus,  .btn-view:active, .btn-view:active:focus {
     border: 0;
     box-shadow: none;
+    background-color: #7DB38C;
 }
 
 .btn-view:hover {
@@ -179,14 +180,17 @@ select {
 
 .badge {
     background-color: lightgray;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: -1px;
     padding: 5px;
     border: 1px grey solid;
     color: grey;
     font-size: 12px;
+}
+
+.badge-position-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: -1px;
 }
 
 .title-card {
@@ -229,4 +233,36 @@ select {
 .MuiSlider-valueLabelOpen {
     background-color: #17331B !important;
     color: white !important;
+}
+
+.body-content {
+    height: 100%;
+    color: #17331B;
+}
+
+/***********************************************************************************************************************
+                                        POSITION-CLASS
+***********************************************************************************************************************/
+.center-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-element {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/***********************************************************************************************************************
+                                        BUTTON-CLASS
+***********************************************************************************************************************/
+
+.input-group-prepend {
+    height: unset !important;
+}
+
+.input-group-text {
+    height: 100%;
 }

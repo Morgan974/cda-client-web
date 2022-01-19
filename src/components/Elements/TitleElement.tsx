@@ -12,7 +12,7 @@ const TitleElement: React.ComponentType<Props> = (
     }) => {
 
     return (
-        <div className={"title " + className}>
+        <div className={"title first-letter-capitalize " + className}>
             <div>{title}</div>
         </div>
     );

@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import FeatureTemplate from "../Template/FeatureTemplate";
 import ListTrekFeature from "../Feature/ListTrekFeature";
 import SearchListTrekFeature from "../Feature/SearchListTrekFeature";
+import AddTrekFeature from "../Feature/AddTrekFeature";
 
 const ListTrekPage: React.ComponentType = () => {
 
@@ -31,6 +32,9 @@ const ListTrekPage: React.ComponentType = () => {
             <NavbarFeature />
             <HeaderFeature />
             <FeatureTemplate
+                menuElement={
+                    <AddTrekFeature />
+                }
                 leftComponent={
                     <SearchListTrekFeature
                         setLoadData={setLoadData}

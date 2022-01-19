@@ -15,7 +15,7 @@ const CheckboxAbstract: React.ComponentType<Props> = ({
     ******************************************************************************************************************/
 
    const [body, setBody] = useState<ReactElement>(<></>);
-   const [tmpData, setTmpData] = useState<number[]>([]);
+   const [tmpData, setTmpData] = useState<string[]>([]);
 
    /*******************************************************************************************************************
     *                                          CALLBACK
@@ -23,9 +23,9 @@ const CheckboxAbstract: React.ComponentType<Props> = ({
 
    const onChange = useCallback((e:any) => {
        if (e.target.checked) {
-           setTmpData([...tmpData, parseInt(e.target.value)]);
+           setTmpData([...tmpData, e.target.value]);
        } else {
-           setTmpData(tmpData.filter((id) => id !== parseInt(e.target.value)));
+           setTmpData(tmpData.filter((id) => id !== e.target.value));
        }
    }, [tmpData]);
 
