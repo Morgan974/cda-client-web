@@ -28,9 +28,9 @@ const FeatureTemplate: React.ComponentType<Props> = (
                 </div>
                 <div className="col-md-9">
                     {
-                        rightComponent.map((element) => {
+                        rightComponent.map((element, key) => {
                             return (
-                                <div>
+                                <div key={key}>
                                     {element}
                                 </div>
                             );

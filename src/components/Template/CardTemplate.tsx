@@ -24,7 +24,7 @@ const CardTemplate: React.ComponentType<Props> = (
             <div className={"card m-2 mb-3 position-relative h-100 " + classNameChildren}>
                 <div className="card-block-header">
                     <BadgeLevelElement
-                        text={parameters.level}
+                        level={parameters.level}
                         className="badge-position-card"
                     />
                     <PriceElement

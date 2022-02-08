@@ -30,7 +30,7 @@ const TrekInformationFeature: React.ComponentType<Props> = ({
                     </div>
                     <div className="col-md-3 center-element">
                         <BadgeLevelElement
-                            text={trek.level}
+                            level={trek.level}
                         />
                     </div>
                     <div className="col-md-3 center-element">{trek.duration} h</div>
