@@ -33,7 +33,9 @@ const ListTrekPage: React.ComponentType = () => {
             <HeaderFeature />
             <FeatureTemplate
                 menuElement={
-                    <AddTrekFeature />
+                    <AddTrekFeature
+                        setLoadData={setLoadData}
+                    />
                 }
                 leftComponent={
                     <SearchListTrekFeature

@@ -5,10 +5,14 @@ import FormTrekFeature from "./FromTrekFeature";
 
 interface Props {
     setLoadData : Function;
+    idTrek : string;
+    parameters : any;
 }
 
-const AddTrekFeature: React.ComponentType<Props> = ({
-    setLoadData
+const EditTrekFeature: React.ComponentType<Props> = ({
+    setLoadData,
+    idTrek,
+    parameters
 }) => {
 
     /*******************************************************************************************************************
@@ -25,7 +29,7 @@ const AddTrekFeature: React.ComponentType<Props> = ({
     const handleValidation = useCallback((e : any) => {
         if (dataToSend) {
             axios
-                .post("http://localhost:1030/api/trek", {
+                .post("http://localhost:1030/api/trek/" + idTrek, {
                     ...dataToSend
                 })
                 .then(response => {
@@ -33,11 +37,13 @@ const AddTrekFeature: React.ComponentType<Props> = ({
                 });
             setLoadData(true)
         }
-        handleClose();
-    }, [dataToSend, setLoadData]);
+        handleClose()
+    }, [dataToSend, idTrek, setLoadData]);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        setShow(true);
+    }
 
     /*******************************************************************************************************************
      *                                          EFFECT
@@ -65,6 +71,7 @@ const AddTrekFeature: React.ComponentType<Props> = ({
                 <Modal.Body>
                     <FormTrekFeature
                         setDataToSend={setDataToSend}
+                        parameters={parameters}
                     />
                 </Modal.Body>
                 <Modal.Footer>
@@ -80,4 +87,4 @@ const AddTrekFeature: React.ComponentType<Props> = ({
     );
 }
 
-export default AddTrekFeature;
+export default EditTrekFeature;

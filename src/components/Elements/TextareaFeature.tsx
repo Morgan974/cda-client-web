@@ -2,11 +2,13 @@ import React, {useCallback} from "react";
 
 interface Props {
     label : string;
+    element?: any;
     setElement : any;
 }
 
 const TextareaFeature: React.ComponentType<Props> = ({
     label,
+    element,
     setElement
 }) => {
 
@@ -37,7 +39,7 @@ const TextareaFeature: React.ComponentType<Props> = ({
                     {label}
                 </span>
             </div>
-            <textarea className="form-control" aria-label="With textarea"  onChange={handleChange} />
+            <textarea className="form-control" aria-label="With textarea" value={element} onChange={handleChange} />
         </div>
     );
 }

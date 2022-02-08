@@ -1,8 +1,8 @@
 import React, {ReactElement, useCallback, useEffect, useState} from "react";
 
 interface Props {
-   element : any;
-   setElement : any;
+   element : string;
+   setElement : (element : string) => void;
    listElements: any;
 }
 

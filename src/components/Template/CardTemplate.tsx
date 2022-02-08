@@ -2,23 +2,26 @@ import React from "react";
 import BadgeLevelElement from "../Elements/BadgeElement";
 import BtnMenueElement from "../Elements/BtnMenuelement";
 import PriceElement from "../Elements/PriceElement";
+import EditTrekFeature from "../Feature/EditTrekFeature";
 
 interface Props {
     className?: string;
     classNameChildren?: string;
     parameters: any;
+    setLoadData: Function;
 }
 
 const CardTemplate: React.ComponentType<Props> = (
     {
         className,
         classNameChildren,
-        parameters
+        parameters,
+        setLoadData
     }) => {
 
     return (
         <div className={className}>
-            <div className={"card m-2 mb-3 position-relative " + classNameChildren}>
+            <div className={"card m-2 mb-3 position-relative h-100 " + classNameChildren}>
                 <div className="card-block-header">
                     <BadgeLevelElement
                         text={parameters.level}
@@ -29,7 +32,7 @@ const CardTemplate: React.ComponentType<Props> = (
                         className="position-absolute card-price"
                     />
                 </div>
-                <div className="card-block-body row">
+                <div className="card-block-body row h-100">
                     <div className="col-md-12 text-center title-card first-letter-capitalize pb-4">
                         {parameters.name}
                     </div>
@@ -42,6 +45,11 @@ const CardTemplate: React.ComponentType<Props> = (
                         className="btn-view"
                         nameMenu={"Détail"}
                         path={"/trek/" + parameters.id}
+                    />
+                    <EditTrekFeature
+                        setLoadData={setLoadData}
+                        idTrek={parameters.id}
+                        parameters={parameters}
                     />
                 </div>
             </div>

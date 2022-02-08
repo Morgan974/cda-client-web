@@ -4,8 +4,8 @@ import LabelAbstract from "../Abstract/LabelAbstract";
 import axios from "axios";
 
 interface Props {
-    element : any;
-    setElement : any;
+    element : string;
+    setElement : (element : string) => void;
     label?: string;
     classNameLabel?: string;
 }

@@ -32,9 +32,10 @@ const ListTrekFeature: React.ComponentType<Props> = (
         viewToDisplay = list.map((element: any, index : number) => {
             return (
                 <CardTemplate
-                    className="col-md-3"
+                    className="col-md-3 mb-4"
                     classNameChildren="card-trek"
                     parameters={element}
+                    setLoadData={setLoadData}
                 />
             );
         });
@@ -44,7 +45,7 @@ const ListTrekFeature: React.ComponentType<Props> = (
                 {viewToDisplay}
             </div>
         );
-    }, [])
+    }, [setLoadData])
 
     /*******************************************************************************************************************
      *                                          EFFECT

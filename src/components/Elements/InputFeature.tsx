@@ -2,11 +2,13 @@ import React, {useCallback} from "react";
 
 interface Props {
     label : string;
+    element?: any;
     setElement : any;
 }
 
 const InputFeature: React.ComponentType<Props> = ({
     label,
+    element,
     setElement
 }) => {
 
@@ -38,7 +40,7 @@ const InputFeature: React.ComponentType<Props> = ({
                 </span>
             </div>
             <input type="text" className="form-control" aria-label="Default"
-                   aria-describedby="inputGroup-sizing-default" onChange={handleChange} />
+                   aria-describedby="inputGroup-sizing-default" value={element} onChange={handleChange} />
         </div>
     );
 }
