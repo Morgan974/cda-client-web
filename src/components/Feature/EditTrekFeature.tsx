@@ -16,14 +16,14 @@ const EditTrekFeature: React.ComponentType<Props> = ({
 }) => {
 
     /*******************************************************************************************************************
-     *                                          STATE
+     *                                          state
      ******************************************************************************************************************/
 
     const [dataToSend, setDataToSend] = useState<any>({});
     const [show, setShow] = useState(false);
 
     /*******************************************************************************************************************
-     *                                          CALLBACK
+     *                                          callback
      ******************************************************************************************************************/
 
     const handleValidation = useCallback((e : any) => {
@@ -41,22 +41,21 @@ const EditTrekFeature: React.ComponentType<Props> = ({
     }, [dataToSend, idTrek, setLoadData]);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => {
-        setShow(true);
-    }
+
+    const handleShow = () => setShow(true);
 
     /*******************************************************************************************************************
-     *                                          EFFECT
+     *                                          effect
      ******************************************************************************************************************/
 
     /*******************************************************************************************************************
-     *                                          RENDER
+     *                                          render
      ******************************************************************************************************************/
 
     return (
         <>
-            <Button className="btn btn-view" onClick={handleShow}>
-                <i className="fas fa-plus-circle" /> Ajouter un trek
+            <Button className="btn btn-view color-black" onClick={handleShow}>
+                <i className="fas fa-edit" /> Éditer le trek
             </Button>
 
             <Modal

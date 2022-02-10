@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import LabelAbstract from "../Abstract/LabelAbstract";
 import {useCallback, useEffect} from "react";
+import axios from "axios";
 
 interface Props {
     setElements: any;
@@ -24,7 +25,10 @@ const SliderPriceFeature: React.ComponentType<Props> = ({
      *                                          state
      ******************************************************************************************************************/
 
-    const [value, setValue] = React.useState<number>(12000);
+    const [loadData, setLoadData] = React.useState<boolean>(false);
+    const [priceMin, setPriceMin] = React.useState<number>();
+    const [priceMax, setPriceMax] = React.useState<number>();
+    const [value, setValue] = React.useState<number>(0);
 
     /*******************************************************************************************************************
      *                                          callback
@@ -34,11 +38,38 @@ const SliderPriceFeature: React.ComponentType<Props> = ({
         setValue(newValue);
     }, [setValue]);
 
+    /*******************************************************************************************************************
+     *                                          effect
+     ******************************************************************************************************************/
+
     useEffect(() => {
         setElements(
             value
         )
     }, [setElements, value]);
+
+    useEffect(() => {
+        setLoadData(true);
+    }, []);
+
+    useEffect(() => {
+        if(priceMax) {
+            setValue(priceMax);
+        }
+    }, [priceMax]);
+
+    useEffect(() => {
+        if(loadData) {
+            axios
+                .get("http://localhost:1030/api/prices")
+                .then(response => {
+                    setPriceMax(response.data.maxPrice);
+                    setPriceMin(response.data.minPrice);
+
+                });
+            setLoadData(false);
+        }
+    }, [loadData, setLoadData]);
 
     /*******************************************************************************************************************
      *                                          render
@@ -53,6 +84,7 @@ const SliderPriceFeature: React.ComponentType<Props> = ({
                 />
             }
             <Box className="px-3">
+                <p>{value} €</p>
                 <Slider
                     className="color-black"
                     getAriaLabel={() => 'price'}
@@ -61,8 +93,8 @@ const SliderPriceFeature: React.ComponentType<Props> = ({
                     valueLabelDisplay="auto"
                     getAriaValueText={valuetext}
                     step={100}
-                    min={120}
-                    max={12000}
+                    min={priceMin}
+                    max={priceMax}
                 />
             </Box>
         </>

@@ -14,8 +14,10 @@ const BadgeLevelElement : React.ComponentType<Props> = (
     const [body, setBody] = useState<string>("");
 
     useEffect(() => {
-        setBody(level.level);
-    }, [level.level]);
+        if(level?.level) {
+            setBody(level?.level);
+        }
+    }, [level]);
 
     return (
         <div className={"badge " + className}>
