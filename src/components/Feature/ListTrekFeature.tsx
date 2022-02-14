@@ -33,7 +33,7 @@ const ListTrekFeature: React.ComponentType<Props> = (
             return (
                 <CardTemplate
                     key={element.id}
-                    className="col-md-4 mb-4"
+                    className="col-xl-4 col-lg-6 mb-4"
                     classNameChildren="card-trek"
                     parameters={element}
                     setLoadData={setLoadData}
@@ -53,7 +53,9 @@ const ListTrekFeature: React.ComponentType<Props> = (
      ******************************************************************************************************************/
 
     useEffect(() => {
+        console.log(loadData);
         if(loadData) {
+            console.log('in if ?');
             axios
                 .get("http://localhost:1030/api/treks", {
                     params: {

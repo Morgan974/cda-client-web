@@ -29,6 +29,8 @@ const SelectAbstract: React.ComponentType<Props> = ({
    const generateLevelSelectViewFunc = useCallback((list: any) => {
       let viewToDisplay:ReactElement;
 
+      setElement(list[0].id);
+
       viewToDisplay = list.map((e : any) => {
          return (
              <option value={e.id}>{e.level}</option>
@@ -40,7 +42,7 @@ const SelectAbstract: React.ComponentType<Props> = ({
              {viewToDisplay}
           </select>
       )
-   }, [element, onChange])
+   }, [element, setElement, onChange])
 
    /*******************************************************************************************************************
     *                                          EFFECT

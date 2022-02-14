@@ -4,6 +4,7 @@ import Slider from '@mui/material/Slider';
 import LabelAbstract from "../Abstract/LabelAbstract";
 import {useCallback, useEffect} from "react";
 import axios from "axios";
+import ViewHourlyAbstract from "../Abstract/ViewHourlyAbstract";
 
 interface Props {
     setElements: any;
@@ -11,7 +12,7 @@ interface Props {
     classNameLabel?: string;
 }
 
-const SliderPriceFeature: React.ComponentType<Props> = ({
+const SliderDurationFeature: React.ComponentType<Props> = ({
     setElements,
     label,
     classNameLabel
@@ -26,8 +27,8 @@ const SliderPriceFeature: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     const [loadData, setLoadData] = React.useState<boolean>(false);
-    const [priceMin, setPriceMin] = React.useState<number>();
-    const [priceMax, setPriceMax] = React.useState<number>();
+    const [durationMin, setDurationMin] = React.useState<number>();
+    const [durationMax, setDurationMax] = React.useState<number>();
     const [value, setValue] = React.useState<number>(0);
 
     /*******************************************************************************************************************
@@ -53,18 +54,18 @@ const SliderPriceFeature: React.ComponentType<Props> = ({
     }, []);
 
     useEffect(() => {
-        if(priceMax) {
-            setValue(priceMax);
+        if(durationMax) {
+            setValue(durationMax);
         }
-    }, [priceMax]);
+    }, [durationMax]);
 
     useEffect(() => {
         if(loadData) {
             axios
-                .get("http://localhost:1030/api/prices")
+                .get("http://localhost:1030/api/duration")
                 .then(response => {
-                    setPriceMax(response.data.maxPrice);
-                    setPriceMin(response.data.minPrice);
+                    setDurationMax(response.data.maxDuration);
+                    setDurationMin(response.data.minDuration);
 
                 });
             setLoadData(false);
@@ -93,13 +94,23 @@ const SliderPriceFeature: React.ComponentType<Props> = ({
                             onChangeCommitted={handleSliderChange}
                             valueLabelDisplay="auto"
                             getAriaValueText={valuetext}
-                            min={priceMin}
-                            max={priceMax}
+                            min={durationMin ? Number(durationMin) : 0}
+                            max={durationMax ? Number(durationMax) : 0}
                         />
                     </div>
                     <div className="row m-0 p-0 fs-12px fw-bold">
-                        <p className="col d-flex justify-content-start indicePriceMin">{priceMin} €</p>
-                        <p className="col d-flex justify-content-end indicePriceMax">{priceMax} €</p>
+                        <p className="col d-flex justify-content-start indicePriceMin">
+                            {
+                                durationMin &&
+                                <ViewHourlyAbstract hours={durationMin} />
+                            }
+                        </p>
+                        <p className="col d-flex justify-content-end indicePriceMax">
+                            {
+                                durationMax &&
+                                <ViewHourlyAbstract hours={durationMax} />
+                            }
+                        </p>
                     </div>
                 </div>
             </Box>
@@ -107,4 +118,4 @@ const SliderPriceFeature: React.ComponentType<Props> = ({
     );
 }
 
-export default SliderPriceFeature;
+export default SliderDurationFeature;

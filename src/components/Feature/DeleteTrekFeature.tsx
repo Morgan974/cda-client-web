@@ -1,61 +1,60 @@
 import React, {useCallback, useState} from "react";
 import axios from "axios";
-import ModalElement from "../Elements/ModalElement";
+import ModalRemoveElement from "../Elements/ModalRemoveElement";
 
 interface Props {
+    trek: any;
     setLoadData : Function;
+    idTrek : string;
+    parameters : any;
 }
 
-const AddTrekFeature: React.ComponentType<Props> = ({
-    setLoadData
+const DeleteTrekFeature: React.ComponentType<Props> = ({
+    trek,
+    setLoadData,
+    idTrek
 }) => {
 
     /*******************************************************************************************************************
-     *                                          STATE
+     *                                          state
      ******************************************************************************************************************/
 
-    const [dataToSend, setDataToSend] = useState<any>({});
     const [show, setShow] = useState(false);
 
     /*******************************************************************************************************************
-     *                                          CALLBACK
+     *                                          callback
      ******************************************************************************************************************/
 
-    const handleValidation = useCallback((e : any) => {
-        if (dataToSend) {
-            axios
-                .post("http://localhost:1030/api/trek", {
-                    ...dataToSend
-                })
-                .then(response => {
-                    console.log(response.data);
-                });
-            setLoadData(true)
-        }
-        handleClose();
-    }, [dataToSend, setLoadData]);
+    const handleRemove = useCallback((e : any) => {
+        axios
+            .delete("http://localhost:1030/api/trek/" + idTrek)
+            .then(response => {
+                console.log(response);
+            });
+        setLoadData(true)
+        handleClose()
+    }, [idTrek, setLoadData]);
 
     const handleClose = () => setShow(false);
 
     /*******************************************************************************************************************
-     *                                          EFFECT
+     *                                          effect
      ******************************************************************************************************************/
 
     /*******************************************************************************************************************
-     *                                          RENDER
+     *                                          render
      ******************************************************************************************************************/
 
     return (
-        <ModalElement
-            className="btn-radius"
+        <ModalRemoveElement
+            nameTrek={trek.name}
             buttonElement={
                 <>
-                    <i className="fas fa-plus-circle" /> Ajouter le trek
+                    <i className="fas fa-trash" />
                 </>
             }
-            titleModal={"Ajouter le trek"}
-            handleValidation={handleValidation}
-            setDataToSend={setDataToSend}
+            titleModal={"Supprimer le trek"}
+            handleRemove={handleRemove}
             show={show}
             setShow={setShow}
             handleClose={handleClose}
@@ -63,4 +62,4 @@ const AddTrekFeature: React.ComponentType<Props> = ({
     );
 }
 
-export default AddTrekFeature;
+export default DeleteTrekFeature;

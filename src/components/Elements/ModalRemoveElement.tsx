@@ -1,26 +1,21 @@
 import React, {ReactElement} from "react";
 import {Button, Modal} from "react-bootstrap";
-import FormTrekFeature from "../Feature/FromTrekFeature";
 
 interface Props {
-    parameters? : any;
-    className?: string;
+    nameTrek : string;
     buttonElement: ReactElement;
     titleModal: string;
-    handleValidation : any;
-    setDataToSend : Function;
+    handleRemove : any;
     show : boolean;
     setShow : (show : boolean) => void,
     handleClose: any;
 }
 
-const ModalElement: React.ComponentType<Props> = ({
-    parameters,
-    className,
+const ModalRemoveElement: React.ComponentType<Props> = ({
+    nameTrek,
     buttonElement,
     titleModal,
-    handleValidation,
-    setDataToSend,
+    handleRemove,
     show,
     setShow,
     handleClose
@@ -42,7 +37,7 @@ const ModalElement: React.ComponentType<Props> = ({
 
     return (
         <>
-            <Button className={"btn btn-view color-pur-black " + className} onClick={handleShow}>
+            <Button className="btn btn-view color-pur-black w-100" onClick={handleShow}>
                 {buttonElement}
             </Button>
 
@@ -58,17 +53,19 @@ const ModalElement: React.ComponentType<Props> = ({
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <FormTrekFeature
-                        setDataToSend={setDataToSend}
-                        parameters={parameters}
-                    />
+                    <span>
+                        Êtes - vous sur de vouloirs supprimés le trek :
+                    </span>
+                    <div className="fw-bold">
+                        {nameTrek}
+                    </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className="btn btn-radius" variant="secondary" onClick={handleClose}>
                         Annuler
                     </Button>
-                    <Button className="btn btn-view btn-radius" onClick={handleValidation}>
-                        Valider
+                    <Button className="btn btn-view btn-radius" onClick={handleRemove}>
+                        Supprimer
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -76,4 +73,4 @@ const ModalElement: React.ComponentType<Props> = ({
     );
 }
 
-export default ModalElement;
+export default ModalRemoveElement;

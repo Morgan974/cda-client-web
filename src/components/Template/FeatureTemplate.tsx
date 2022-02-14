@@ -23,10 +23,10 @@ const FeatureTemplate: React.ComponentType<Props> = (
                         {menuElement}
                     </div>
                 }
-                <div className="col-md-3">
+                <div className="col-xl-3 col-lg-12">
                     {leftComponent}
                 </div>
-                <div className="col-md-9">
+                <div className="col-xl-9 col-lg-12">
                     {
                         rightComponent.map((element, key) => {
                             return (

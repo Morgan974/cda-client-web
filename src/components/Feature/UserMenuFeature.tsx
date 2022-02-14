@@ -1,8 +1,8 @@
 function UserMenuFeature() {
     return (
         <>
-            <button className="btn btn-primary">Avatar</button>
-            <button className="btn btn-primary">Language</button>
+            {/*<button className="btn btn-primary">Avatar</button>*/}
+            {/*<button className="btn btn-primary">Language</button>*/}
         </>
     );
 }

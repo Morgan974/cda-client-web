@@ -21,8 +21,8 @@ const TrekDescriptionFeature: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     return (
-        <div className="block-search">
-            <div className="fw-bold">Description :</div>
+        <div className="block-search color-grey">
+            <div className="fw-bold color-red d-flex justify-content-center fs-28px mb-3">Description</div>
             {description}
         </div>
     )

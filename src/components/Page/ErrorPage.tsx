@@ -12,7 +12,7 @@ const ErrorPage: React.ComponentType = () => {
                 <div className="col-md-12 d-flex justify-content-center">
                     <BtnMenueElement
                         className={"btn-error"}
-                        nameMenu={"Retour"}
+                        nameMenu={<>Retour</>}
                         path={"/list-trek"}
                     />
                 </div>

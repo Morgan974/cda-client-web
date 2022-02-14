@@ -234,6 +234,10 @@ select {
     color: #17331B;
 }
 
+.fs-12px {
+    font-size: 12px;
+}
+
 .fs-16px {
     font-size: 16px;
 }
@@ -281,6 +285,10 @@ select {
     color: #000000;
 }
 
+.color-red {
+    color: #E85A4F;
+}
+
 /***********************************************************************************************************************
                                         MODAL-CLASS
 ***********************************************************************************************************************/
@@ -297,6 +305,10 @@ select {
     border-bottom: 1px solid #000000;
 }
 
+.modal-footer {
+    border-top: 1px solid #000000;
+}
+
 .modal-title {
     font-size: 36px;
     display: flex;
@@ -305,4 +317,26 @@ select {
 
 .modal-header .btn-close {
     color : #E85A4F;
+}
+
+.indicePriceMin {
+    padding: 0;
+    margin-left: -10px;
+}
+
+.indicePriceMax {
+    padding: 0;
+    margin-right: -10px;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.btn-radius {
+    border-radius: 0.25rem;
+}
+
+.border-bottom {
+    border-bottom: 1px solid black !important;
 }

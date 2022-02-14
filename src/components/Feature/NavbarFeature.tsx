@@ -11,12 +11,12 @@ function NavbarFeature() {
             <div className="col-md-10">
                 <BtnMenueElement
                     className="col-md-2"
-                    nameMenu={nameMenu}
+                    nameMenu={<>{nameMenu}</>}
                     path={"/list-trek"}
                 />
                 <BtnMenueElement
                     className="col-md-2"
-                    nameMenu={nameMenu2}
+                    nameMenu={<>{nameMenu2}</>}
                     path={"/list-group-trek"}
                 />
             </div>

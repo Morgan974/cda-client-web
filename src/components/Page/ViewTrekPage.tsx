@@ -4,7 +4,6 @@ import axios from "axios";
 import {localAddress} from "../../config/CommonConst";
 import HeaderFeature from "../Feature/HeaderFeature";
 import TrekInformationFeature from "../Feature/TrekInformationFeature";
-import FeatureTemplate from "../Template/FeatureTemplate";
 import TrekDescriptionFeature from "../Feature/TrekDescriptionFeature";
 
 const ViewTrekPage: React.ComponentType = () => {
@@ -60,17 +59,11 @@ const ViewTrekPage: React.ComponentType = () => {
             <TrekInformationFeature
                 trek={trek}
             />
-            <FeatureTemplate
-                leftComponent={
-                    <TrekDescriptionFeature
-                        description={trek.description}
-                    />
-                }
-                rightComponent={[
-                    <>
-                    </>
-                ]}
-            />
+            <div className="row m-4">
+                <TrekDescriptionFeature
+                    description={trek.description}
+                />
+            </div>
         </div>
     );
 }

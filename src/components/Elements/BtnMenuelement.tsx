@@ -1,8 +1,8 @@
-import React from "react";
+import React, {ReactElement} from "react";
 import { Link } from "react-router-dom";
 interface Props {
     className?: string;
-    nameMenu: string;
+    nameMenu: ReactElement;
     path: string;
 }
 

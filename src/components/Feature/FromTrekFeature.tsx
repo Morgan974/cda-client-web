@@ -77,7 +77,7 @@ const FormTrekFeature: React.ComponentType<Props> = ({
             setPrice(parameters.price);
             setDistance(parameters.distance);
             setDuration(parameters.duration);
-            setLevel(parameters.level);
+            setLevel(parameters.level.id);
         }
     }, [parameters]);
 

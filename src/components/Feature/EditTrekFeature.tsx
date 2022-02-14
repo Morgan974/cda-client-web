@@ -52,9 +52,10 @@ const EditTrekFeature: React.ComponentType<Props> = ({
     return (
         <ModalElement
             parameters={parameters}
+            className={"w-100"}
             buttonElement={
                 <>
-                    <i className="fas fa-edit" /> Éditer le trek
+                    <i className="fas fa-edit" />
                 </>
             }
             titleModal={"Éditer le trek"}

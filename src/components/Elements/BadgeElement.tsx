@@ -7,7 +7,7 @@ interface Props {
 
 const BadgeLevelElement : React.ComponentType<Props> = (
     {
-        className,
+        className= 'badge',
         level
     }) => {
 
@@ -20,7 +20,7 @@ const BadgeLevelElement : React.ComponentType<Props> = (
     }, [level]);
 
     return (
-        <div className={"badge color-black " + className}>
+        <div className={"color-black first-letter-capitalize " + className}>
             {body}
         </div>
     );

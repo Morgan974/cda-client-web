@@ -4,6 +4,7 @@ import BtnMenueElement from "../Elements/BtnMenuelement";
 import PriceElement from "../Elements/PriceElement";
 import EditTrekFeature from "../Feature/EditTrekFeature";
 import ViewHourlyAbstract from "../Abstract/ViewHourlyAbstract";
+import DeleteTrekFeature from "../Feature/DeleteTrekFeature";
 
 interface Props {
     className?: string;
@@ -26,7 +27,7 @@ const CardTemplate: React.ComponentType<Props> = (
                 <div className="card-block-header">
                     <BadgeLevelElement
                         level={parameters.level}
-                        className="badge-position-card"
+                        className="badge-position-card badge"
                     />
                     <PriceElement
                         price={parameters.price}
@@ -46,15 +47,30 @@ const CardTemplate: React.ComponentType<Props> = (
                 </div>
                 <div className="card-block-footer row">
                     <BtnMenueElement
-                        className="btn-view"
-                        nameMenu={"Détail"}
+                        className="btn-view border-bottom"
+                        nameMenu={
+                            <>
+                                <i className="fas fa-eye" /> Détail
+                            </>}
                         path={"/trek/" + parameters.id}
                     />
-                    <EditTrekFeature
-                        setLoadData={setLoadData}
-                        idTrek={parameters.id}
-                        parameters={parameters}
-                    />
+                    <div className="row m-0 p-0">
+                        <div className="col m-0 p-0">
+                            <EditTrekFeature
+                                setLoadData={setLoadData}
+                                idTrek={parameters.id}
+                                parameters={parameters}
+                            />
+                        </div>
+                        <div className="col m-0 p-0">
+                            <DeleteTrekFeature
+                                trek={parameters}
+                                setLoadData={setLoadData}
+                                idTrek={parameters.id}
+                                parameters={parameters}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
