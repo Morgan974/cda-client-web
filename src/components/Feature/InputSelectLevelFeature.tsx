@@ -47,8 +47,8 @@ const InputSelectLevelFeature: React.ComponentType<Props> = ({
         <>
             {label &&
                 <LabelAbstract
-                    label={label}
-                    className={classNameLabel}
+                    label={label + ' :'}
+                    className='color-grey fs-16px'
                 />
             }
             {listElements &&

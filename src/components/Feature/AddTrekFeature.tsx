@@ -1,7 +1,6 @@
 import React, {useCallback, useState} from "react";
-import {Button, Modal} from "react-bootstrap";
 import axios from "axios";
-import FormTrekFeature from "./FromTrekFeature";
+import ModalElement from "../Elements/ModalElement";
 
 interface Props {
     setLoadData : Function;
@@ -37,7 +36,6 @@ const AddTrekFeature: React.ComponentType<Props> = ({
     }, [dataToSend, setLoadData]);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     /*******************************************************************************************************************
      *                                          EFFECT
@@ -48,35 +46,19 @@ const AddTrekFeature: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     return (
-        <>
-            <Button className="btn btn-view" onClick={handleShow}>
-                <i className="fas fa-plus-circle" /> Ajouter un trek
-            </Button>
-
-            <Modal
-                show={show}
-                onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>Ajouter un trek</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <FormTrekFeature
-                        setDataToSend={setDataToSend}
-                    />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Annuler
-                    </Button>
-                    <Button className="btn btn-view" onClick={handleValidation}>
-                        Valider
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </>
+        <ModalElement
+            buttonElement={
+                <>
+                    <i className="fas fa-plus-circle" /> Ajouter le trek
+                </>
+            }
+            titleModal={"Ajouter le trek"}
+            handleValidation={handleValidation}
+            setDataToSend={setDataToSend}
+            show={show}
+            setShow={setShow}
+            handleClose={handleClose}
+        />
     );
 }
 

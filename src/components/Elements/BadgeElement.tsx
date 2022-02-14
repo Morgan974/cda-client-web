@@ -20,7 +20,7 @@ const BadgeLevelElement : React.ComponentType<Props> = (
     }, [level]);
 
     return (
-        <div className={"badge " + className}>
+        <div className={"badge color-black " + className}>
             {body}
         </div>
     );

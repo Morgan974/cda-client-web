@@ -33,7 +33,7 @@ const ListTrekFeature: React.ComponentType<Props> = (
             return (
                 <CardTemplate
                     key={element.id}
-                    className="col-md-3 mb-4"
+                    className="col-md-4 mb-4"
                     classNameChildren="card-trek"
                     parameters={element}
                     setLoadData={setLoadData}

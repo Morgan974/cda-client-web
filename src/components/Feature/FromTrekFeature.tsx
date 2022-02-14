@@ -21,6 +21,7 @@ const FormTrekFeature: React.ComponentType<Props> = ({
     const [name, setName] = useState<string>('');
     const [duration, setDuration] = useState<string>('');
     const [price, setPrice] = useState<string>('');
+    const [distance, setDistance] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [level, setLevel] = useState<string>('');
 
@@ -42,22 +43,28 @@ const FormTrekFeature: React.ComponentType<Props> = ({
                     setElement={setDuration}
                 />
                 <InputFeature
+                    label={"Distance"}
+                    element={distance}
+                    setElement={setDistance}
+                />
+                <InputFeature
                     label={"Prix"}
                     element={price}
                     setElement={setPrice}
                 />
                 <TextareaFeature
-                    label={"Description"}
+                    label="Description (courte)"
                     element={description}
                     setElement={setDescription}
                 />
                 <InputSelectLevelFeature
+                    label="Sélectionner la difficulté"
                     element={level}
                     setElement={setLevel}
                 />
             </>
         );
-    }, [name, setName, description, setDescription, price, setPrice, duration, setDuration, level, setLevel]);
+    }, [name, setName, description, setDescription, price, setPrice, distance, setDistance, duration, setDuration, level, setLevel]);
 
     /*******************************************************************************************************************
      *                                          EFFECT
@@ -68,6 +75,7 @@ const FormTrekFeature: React.ComponentType<Props> = ({
             setName(parameters.name);
             setDescription(parameters.description);
             setPrice(parameters.price);
+            setDistance(parameters.distance);
             setDuration(parameters.duration);
             setLevel(parameters.level);
         }
@@ -78,10 +86,11 @@ const FormTrekFeature: React.ComponentType<Props> = ({
             name : name,
             duration : duration,
             price : price,
+            distance : distance,
             description : description,
             level: level
         });
-    }, [setDataToSend, parameters, name, duration, price, description, level]);
+    }, [setDataToSend, parameters, name, duration, price, distance, description, level]);
 
     /*******************************************************************************************************************
      *                                          RENDER

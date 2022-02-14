@@ -1,4 +1,5 @@
 import React, {useCallback} from "react";
+import LabelAbstract from "../Abstract/LabelAbstract";
 
 interface Props {
     label : string;
@@ -33,13 +34,12 @@ const InputFeature: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     return (
-        <div className="input-group my-2">
-            <div className="input-group-prepend">
-                <span className="input-group-text" id="inputGroup-sizing-default">
-                    {label}
-                </span>
-            </div>
-            <input type="text" className="form-control" aria-label="Default"
+        <div className="input-group display-flex flex-column w-100 mb-2">
+            <LabelAbstract
+                className='color-grey fs-16px'
+                label={label + ' :'}
+            />
+            <input type="text" className="form-control w-100" aria-label="Default"
                    aria-describedby="inputGroup-sizing-default" value={element} onChange={handleChange} />
         </div>
     );

@@ -1,7 +1,6 @@
 import React, {useCallback, useState} from "react";
-import {Button, Modal} from "react-bootstrap";
 import axios from "axios";
-import FormTrekFeature from "./FromTrekFeature";
+import ModalElement from "../Elements/ModalElement";
 
 interface Props {
     setLoadData : Function;
@@ -42,8 +41,6 @@ const EditTrekFeature: React.ComponentType<Props> = ({
 
     const handleClose = () => setShow(false);
 
-    const handleShow = () => setShow(true);
-
     /*******************************************************************************************************************
      *                                          effect
      ******************************************************************************************************************/
@@ -53,36 +50,20 @@ const EditTrekFeature: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     return (
-        <>
-            <Button className="btn btn-view color-black" onClick={handleShow}>
-                <i className="fas fa-edit" /> Éditer le trek
-            </Button>
-
-            <Modal
-                show={show}
-                onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>Ajouter un trek</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <FormTrekFeature
-                        setDataToSend={setDataToSend}
-                        parameters={parameters}
-                    />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Annuler
-                    </Button>
-                    <Button className="btn btn-view" onClick={handleValidation}>
-                        Valider
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </>
+        <ModalElement
+            parameters={parameters}
+            buttonElement={
+                <>
+                    <i className="fas fa-edit" /> Éditer le trek
+                </>
+            }
+            titleModal={"Éditer le trek"}
+            handleValidation={handleValidation}
+            setDataToSend={setDataToSend}
+            show={show}
+            setShow={setShow}
+            handleClose={handleClose}
+        />
     );
 }
 

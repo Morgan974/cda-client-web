@@ -3,6 +3,7 @@ import BadgeLevelElement from "../Elements/BadgeElement";
 import BtnMenueElement from "../Elements/BtnMenuelement";
 import PriceElement from "../Elements/PriceElement";
 import EditTrekFeature from "../Feature/EditTrekFeature";
+import ViewHourlyAbstract from "../Abstract/ViewHourlyAbstract";
 
 interface Props {
     className?: string;
@@ -33,8 +34,11 @@ const CardTemplate: React.ComponentType<Props> = (
                     />
                 </div>
                 <div className="card-block-body row h-100">
-                    <div className="col-md-12 text-center title-card first-letter-capitalize pb-4">
+                    <div className="col-md-12 text-center title-card first-letter-capitalize fs-28px pb-2">
                         {parameters.name}
+                    </div>
+                    <div className="col-md-12 text-center color-black fs-24px pb-4">
+                        {parameters.distance} km - <ViewHourlyAbstract hours={parameters.duration} />
                     </div>
                     <div className="col-md-12 pb-3">
                         {parameters.description}
