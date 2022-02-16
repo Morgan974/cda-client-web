@@ -9,10 +9,10 @@ interface Props {
 }
 
 const EditTrekFeature: React.ComponentType<Props> = ({
-    setLoadData,
-    idTrek,
-    parameters
-}) => {
+     setLoadData,
+     idTrek,
+     parameters
+ }) => {
 
     /*******************************************************************************************************************
      *                                          state
@@ -25,6 +25,11 @@ const EditTrekFeature: React.ComponentType<Props> = ({
      *                                          callback
      ******************************************************************************************************************/
 
+    const handleClose = useCallback(() => {
+        setLoadData(true);
+        setShow(false);
+    }, [setLoadData]);
+
     const handleValidation = useCallback((e : any) => {
         if (dataToSend) {
             axios
@@ -34,12 +39,9 @@ const EditTrekFeature: React.ComponentType<Props> = ({
                 .then(response => {
                     console.log(response.data);
                 });
-            setLoadData(true)
         }
         handleClose()
-    }, [dataToSend, idTrek, setLoadData]);
-
-    const handleClose = () => setShow(false);
+    }, [dataToSend, idTrek, handleClose]);
 
     /*******************************************************************************************************************
      *                                          effect

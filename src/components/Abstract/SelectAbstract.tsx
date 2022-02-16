@@ -29,7 +29,9 @@ const SelectAbstract: React.ComponentType<Props> = ({
    const generateLevelSelectViewFunc = useCallback((list: any) => {
       let viewToDisplay:ReactElement;
 
-      setElement(list[0].id);
+      if(!element) {
+         setElement(list[0].id);
+      }
 
       viewToDisplay = list.map((e : any) => {
          return (
@@ -37,8 +39,9 @@ const SelectAbstract: React.ComponentType<Props> = ({
          )
       })
 
+
       return (
-          <select className="form-control" id="searchType" onChange={ e => onChange(e) } value={element.id}>
+          <select className="form-control" id="searchType" onChange={ e => onChange(e) } value={element}>
              {viewToDisplay}
           </select>
       )

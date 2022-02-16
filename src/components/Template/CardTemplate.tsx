@@ -10,7 +10,7 @@ interface Props {
     className?: string;
     classNameChildren?: string;
     parameters: any;
-    setLoadData: Function;
+    setLoadData: (loadData : boolean) => void;
 }
 
 const CardTemplate: React.ComponentType<Props> = (

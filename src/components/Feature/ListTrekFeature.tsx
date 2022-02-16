@@ -29,7 +29,7 @@ const ListTrekFeature: React.ComponentType<Props> = (
     const  generateListViewFunc = useCallback((list: any) => {
         let viewToDisplay:string|ReactElement;
 
-        viewToDisplay = list.map((element: any, index : number) => {
+        viewToDisplay = list.map((element: any) => {
             return (
                 <CardTemplate
                     key={element.id}
@@ -53,9 +53,8 @@ const ListTrekFeature: React.ComponentType<Props> = (
      ******************************************************************************************************************/
 
     useEffect(() => {
-        console.log(loadData);
         if(loadData) {
-            console.log('in if ?');
+            console.log('and is here ?');
             axios
                 .get("http://localhost:1030/api/treks", {
                     params: {
@@ -65,8 +64,8 @@ const ListTrekFeature: React.ComponentType<Props> = (
                 })
                 .then(response => {
                     setListData(response.data);
+                    setLoadData(false);
                 });
-            setLoadData(false);
         }
     }, [loadData, dataToSend, setLoadData]);
 

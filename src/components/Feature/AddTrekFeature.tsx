@@ -3,7 +3,7 @@ import axios from "axios";
 import ModalElement from "../Elements/ModalElement";
 
 interface Props {
-    setLoadData : Function;
+    setLoadData : (loadData : boolean) => void;
 }
 
 const AddTrekFeature: React.ComponentType<Props> = ({
@@ -21,7 +21,12 @@ const AddTrekFeature: React.ComponentType<Props> = ({
      *                                          CALLBACK
      ******************************************************************************************************************/
 
-    const handleValidation = useCallback((e : any) => {
+    const handleClose = useCallback(() => {
+        setLoadData(true);
+        setShow(false);
+    }, [setLoadData]);
+
+    const handleValidation = useCallback(() => {
         if (dataToSend) {
             axios
                 .post("http://localhost:1030/api/trek", {
@@ -30,12 +35,9 @@ const AddTrekFeature: React.ComponentType<Props> = ({
                 .then(response => {
                     console.log(response.data);
                 });
-            setLoadData(true)
         }
         handleClose();
-    }, [dataToSend, setLoadData]);
-
-    const handleClose = () => setShow(false);
+    }, [dataToSend, handleClose]);
 
     /*******************************************************************************************************************
      *                                          EFFECT

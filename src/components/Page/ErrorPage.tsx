@@ -2,7 +2,6 @@ import React from "react";
 import BtnMenueElement from "../Elements/BtnMenuelement";
 
 const ErrorPage: React.ComponentType = () => {
-
     return (
         <div className='page-error'>
             <div className="row">

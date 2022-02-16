@@ -25,17 +25,19 @@ const DeleteTrekFeature: React.ComponentType<Props> = ({
      *                                          callback
      ******************************************************************************************************************/
 
+    const handleClose = useCallback(() => {
+        setLoadData(true);
+        setShow(false);
+    }, [setLoadData]);
+
     const handleRemove = useCallback((e : any) => {
         axios
             .delete("http://localhost:1030/api/trek/" + idTrek)
             .then(response => {
                 console.log(response);
             });
-        setLoadData(true)
         handleClose()
-    }, [idTrek, setLoadData]);
-
-    const handleClose = () => setShow(false);
+    }, [idTrek, handleClose]);
 
     /*******************************************************************************************************************
      *                                          effect
