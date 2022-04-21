@@ -31,7 +31,27 @@ const EditTrekFeature: React.ComponentType<Props> = ({
     }, [setLoadData]);
 
     const handleValidation = useCallback((e : any) => {
-        if (dataToSend) {
+
+        let haveError = false;
+
+        for (const [key, value] of Object.entries(dataToSend)) {
+            const element = document.getElementById(key + "-input-alert");
+            console.log(key, value);
+            if(value === undefined || !value) {
+                if (element) {
+                    element.innerHTML = "Ce champs ne peut être null et doit être renseigné";
+                    element.classList.remove("d-none");
+                    haveError = true;
+                }
+            } else {
+                if (element) {
+                    element.classList.add("d-none");
+
+                }
+            }
+        }
+
+        if (!haveError && dataToSend) {
             axios
                 .post("http://localhost:1030/api/trek/" + idTrek, {
                     ...dataToSend
@@ -39,8 +59,8 @@ const EditTrekFeature: React.ComponentType<Props> = ({
                 .then(response => {
                     console.log(response.data);
                 });
+            handleClose()
         }
-        handleClose()
     }, [dataToSend, idTrek, handleClose]);
 
     /*******************************************************************************************************************

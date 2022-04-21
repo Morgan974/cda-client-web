@@ -5,6 +5,7 @@ import ListGroupTrekPage from "./components/Page/ListGroupTrekPage";
 import ListTrekPage from "./components/Page/ListTrekPage";
 import ErrorPage from "./components/Page/ErrorPage";
 import ViewTrekPage from "./components/Page/ViewTrekPage";
+import ListTrekAdminPage from "./components/Page/ListTrekAdminPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Route path="/list-trek" element={<ListTrekPage />} />
             <Route path="/list-group-trek" element={<ListGroupTrekPage />} />
             <Route path="/trek/:idTrek" element={<ViewTrekPage />} />
+            <Route path="/admin/list-trek" element={<ListTrekAdminPage />} />
             <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </>

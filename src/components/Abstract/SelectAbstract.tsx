@@ -35,7 +35,7 @@ const SelectAbstract: React.ComponentType<Props> = ({
 
       viewToDisplay = list.map((e : any) => {
          return (
-             <option value={e.id}>{e.level}</option>
+             <option key={e.id} value={e.id}>{e.level}</option>
          )
       })
 

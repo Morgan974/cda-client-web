@@ -1,7 +1,8 @@
 import React, {useCallback, useEffect, useState} from "react";
-import InputFeature from "../Elements/InputFeature";
-import TextareaFeature from "../Elements/TextareaFeature";
+import TextareaElement from "../Elements/TextareaElement";
 import InputSelectLevelFeature from "./InputSelectLevelFeature";
+import InputNumberElement from "../Elements/InputNumberElement";
+import InputTextElement from "../Elements/InputTextElement";
 
 interface Props {
     setDataToSend : Function;
@@ -18,12 +19,12 @@ const FormTrekFeature: React.ComponentType<Props> = ({
      *                                          STATE
      ******************************************************************************************************************/
 
-    const [name, setName] = useState<string>('');
-    const [duration, setDuration] = useState<string>('');
-    const [price, setPrice] = useState<string>('');
-    const [distance, setDistance] = useState<string>('');
-    const [description, setDescription] = useState<string>('');
-    const [level, setLevel] = useState<string>('');
+    const [name, setName] = useState<string>(), nameLabel = "name";
+    const [duration, setDuration] = useState<number>(), durationLabel = "duration";
+    const [price, setPrice] = useState<number>(), priceLabel = "price";
+    const [distance, setDistance] = useState<number>(), distanceLabel = "distance";
+    const [description, setDescription] = useState<string>(), descriptionLabel = "description";
+    const [level, setLevel] = useState<string>(''), levelLabel= "level";
 
     /*******************************************************************************************************************
      *                                          CALLBACK
@@ -32,32 +33,38 @@ const FormTrekFeature: React.ComponentType<Props> = ({
     const generateFormBody = useCallback(() => {
         return (
             <>
-                <InputFeature
+                <InputTextElement
+                    keyName={nameLabel}
                     label={"Nom"}
                     element={name}
                     setElement={setName}
                 />
-                <InputFeature
-                    label={"Duration"}
+                <InputNumberElement
+                    keyName={durationLabel}
+                    label={"Durée"}
                     element={duration}
                     setElement={setDuration}
                 />
-                <InputFeature
+                <InputNumberElement
+                    keyName={distanceLabel}
                     label={"Distance"}
                     element={distance}
                     setElement={setDistance}
                 />
-                <InputFeature
+                <InputNumberElement
+                    keyName={priceLabel}
                     label={"Prix"}
                     element={price}
                     setElement={setPrice}
                 />
-                <TextareaFeature
-                    label="Description (courte)"
+                <TextareaElement
+                    keyName={descriptionLabel}
+                    label={"Description"}
                     element={description}
                     setElement={setDescription}
                 />
                 <InputSelectLevelFeature
+                    key={levelLabel}
                     label="Sélectionner la difficulté"
                     element={level}
                     setElement={setLevel}

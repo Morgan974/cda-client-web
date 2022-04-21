@@ -1,31 +1,37 @@
-import React, {useCallback} from "react";
-import LabelAbstract from "../Abstract/LabelAbstract";
+import React, {ChangeEventHandler, useCallback} from "react";
+import LabelAbstract from "./LabelAbstract";
 
 interface Props {
+    keyName: string;
     label? : string;
+    type?: string;
     element?: any;
     setElement : any;
     placeholder? : string;
+    functionHandle? : ChangeEventHandler<HTMLInputElement>;
 }
 
-const InputFeature: React.ComponentType<Props> = ({
+const InputAbstract: React.ComponentType<Props> = ({
+    keyName,
     label,
+    type= "text",
     element,
     setElement,
-    placeholder
+    placeholder,
+    functionHandle
 }) => {
 
     /*******************************************************************************************************************
      *                                          STATE
      ******************************************************************************************************************/
 
-    const handleChange = useCallback((e:any) => {
-        setElement(e.target.value)
-    }, [setElement])
-
     /*******************************************************************************************************************
      *                                          CALLBACK
      ******************************************************************************************************************/
+
+    const handleChange = useCallback((e:any) => {
+        setElement(e.target.value)
+    }, [setElement]);
 
     /*******************************************************************************************************************
      *                                          EFFECT
@@ -36,7 +42,7 @@ const InputFeature: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     return (
-        <div className="input-group display-flex flex-column w-100 mb-2">
+        <div key={keyName} className="input-group display-flex flex-column w-100 mb-2">
             {label &&
                 <LabelAbstract
                     className='color-grey fs-16px'
@@ -44,16 +50,18 @@ const InputFeature: React.ComponentType<Props> = ({
                 />
             }
             <input
-                type="text"
+                id={label + "-input"}
+                type={type}
                 className="form-control w-100"
                 aria-label="Default"
                 aria-describedby="inputGroup-sizing-default"
                 placeholder={placeholder ? placeholder : undefined}
                 value={element}
-                onChange={handleChange}
+                onChange={functionHandle ? functionHandle : handleChange}
             />
+            <small id={keyName + "-input-alert"} className="d-none alert-danger p-1" />
         </div>
     );
 }
 
-export default InputFeature;
+export default InputAbstract;

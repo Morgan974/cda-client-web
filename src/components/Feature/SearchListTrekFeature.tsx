@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import CheckboxSelectLevelFeature from "./CheckboxSelectLevelFeature";
 import SliderPriceFeature from "./SliderPriceFeature";
 import SliderDurationFeature from "./SliderDurationFeature";
-import InputFeature from "../Elements/InputFeature";
+import InputSearchLimiterElement from "../Elements/InputSearchLimiterElement";
 
 interface Props {
     setDataToSend : (dataToSend : any) => (void);
@@ -43,7 +43,8 @@ const SearchListTrekFeature: React.ComponentType<Props> = ({
 
     return (
         <div className="block-search mb-4">
-            <InputFeature
+            <InputSearchLimiterElement
+                keyName={"search"}
                 setElement={setSearch}
                 placeholder={"rechercher un trek..."}
             />

@@ -4,6 +4,7 @@ import React, {ReactElement, useEffect, useState} from "react";
 import FeatureTemplate from "../Template/FeatureTemplate";
 import ListTrekFeature from "../Feature/ListTrekFeature";
 import SearchListTrekFeature from "../Feature/SearchListTrekFeature";
+import AddTrekFeature from "../Feature/AddTrekFeature";
 
 const ListTrekPage: React.ComponentType = () => {
 
@@ -20,15 +21,16 @@ const ListTrekPage: React.ComponentType = () => {
      ******************************************************************************************************************/
 
     useEffect(() => {
-        setLoadData(true);
-    }, []);
-
-    useEffect(() => {
         setBody(
             <div className="body-layout">
                 <NavbarFeature />
                 <HeaderFeature />
                 <FeatureTemplate
+                    menuElement={
+                        <AddTrekFeature
+                            setLoadData={setLoadData}
+                        />
+                    }
                     leftComponent={
                         <SearchListTrekFeature
                             setLoadData={setLoadData}
@@ -40,7 +42,7 @@ const ListTrekPage: React.ComponentType = () => {
                             dataToSend={dataToSend}
                             loadData={loadData}
                             setLoadData={setLoadData}
-                            isAdmin={false}
+                            isAdmin={true}
                         />
                     ]}
                 />

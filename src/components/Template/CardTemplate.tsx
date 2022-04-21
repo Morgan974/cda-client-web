@@ -11,6 +11,7 @@ interface Props {
     classNameChildren?: string;
     parameters: any;
     setLoadData: (loadData : boolean) => void;
+    isAdmin?: boolean;
 }
 
 const CardTemplate: React.ComponentType<Props> = (
@@ -18,7 +19,8 @@ const CardTemplate: React.ComponentType<Props> = (
         className,
         classNameChildren,
         parameters,
-        setLoadData
+        setLoadData,
+        isAdmin= false
     }) => {
 
     return (
@@ -54,23 +56,25 @@ const CardTemplate: React.ComponentType<Props> = (
                             </>}
                         path={"/trek/" + parameters.id}
                     />
-                    <div className="row m-0 p-0">
-                        <div className="col m-0 p-0">
-                            <EditTrekFeature
-                                setLoadData={setLoadData}
-                                idTrek={parameters.id}
-                                parameters={parameters}
-                            />
+                    {isAdmin &&
+                        <div className="row m-0 p-0">
+                            <div className="col m-0 p-0">
+                                <EditTrekFeature
+                                    setLoadData={setLoadData}
+                                    idTrek={parameters.id}
+                                    parameters={parameters}
+                                />
+                            </div>
+                            <div className="col m-0 p-0">
+                                <DeleteTrekFeature
+                                    trek={parameters}
+                                    setLoadData={setLoadData}
+                                    idTrek={parameters.id}
+                                    parameters={parameters}
+                                />
+                            </div>
                         </div>
-                        <div className="col m-0 p-0">
-                            <DeleteTrekFeature
-                                trek={parameters}
-                                setLoadData={setLoadData}
-                                idTrek={parameters.id}
-                                parameters={parameters}
-                            />
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>

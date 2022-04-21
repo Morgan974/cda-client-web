@@ -2,12 +2,14 @@ import React, {useCallback} from "react";
 import LabelAbstract from "../Abstract/LabelAbstract";
 
 interface Props {
+    keyName: string;
     label : string;
     element?: any;
     setElement : any;
 }
 
-const TextareaFeature: React.ComponentType<Props> = ({
+const TextareaElement: React.ComponentType<Props> = ({
+    keyName,
     label,
     element,
     setElement
@@ -18,7 +20,7 @@ const TextareaFeature: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     const handleChange = useCallback((e:any) => {
-        setElement(e.target.value)
+        setElement(e.target.value);
     }, [setElement])
 
     /*******************************************************************************************************************
@@ -34,14 +36,15 @@ const TextareaFeature: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     return (
-        <div className="input-group display-flex flex-column w-100 mb-2">
+        <div key={keyName} className="input-group display-flex flex-column w-100 mb-2">
             <LabelAbstract
                 className='color-grey fs-16px'
                 label={label + ' :'}
             />
             <textarea className="form-control w-100" aria-label="With textarea" value={element} onChange={handleChange} />
+            <small id={keyName + "-input-alert"} className="d-none alert-danger p-1" />
         </div>
     );
 }
 
-export default TextareaFeature;
+export default TextareaElement;

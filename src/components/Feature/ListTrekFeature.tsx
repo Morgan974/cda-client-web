@@ -6,13 +6,15 @@ interface Props {
     dataToSend: any;
     loadData: boolean;
     setLoadData: (loadData:boolean) => (void);
+    isAdmin?: boolean;
 }
 
 const ListTrekFeature: React.ComponentType<Props> = (
     {
         dataToSend,
         loadData,
-        setLoadData
+        setLoadData,
+        isAdmin
     }) => {
 
     /*******************************************************************************************************************
@@ -29,24 +31,27 @@ const ListTrekFeature: React.ComponentType<Props> = (
     const  generateListViewFunc = useCallback((list: any) => {
         let viewToDisplay:string|ReactElement;
 
-        viewToDisplay = list.map((element: any) => {
-            return (
-                <CardTemplate
-                    key={element.id}
-                    className="col-xl-4 col-lg-6 mb-4"
-                    classNameChildren="card-trek"
-                    parameters={element}
-                    setLoadData={setLoadData}
-                />
-            );
-        });
+        if(loadData) {
+            viewToDisplay = list.map((element: any) => {
+                return (
+                    <CardTemplate
+                        key={element.id}
+                        className="col-xl-4 col-lg-6 mb-4"
+                        classNameChildren="card-trek"
+                        parameters={element}
+                        setLoadData={setLoadData}
+                        isAdmin={isAdmin}
+                    />
+                );
+            });
 
-        return (
-            <div className="row col-md-12">
-                {viewToDisplay}
-            </div>
-        );
-    }, [setLoadData])
+            return (
+                <div className="row col-md-12">
+                    {viewToDisplay}
+                </div>
+            );
+        }
+    }, [loadData, setLoadData, isAdmin]);
 
     /*******************************************************************************************************************
      *                                          EFFECT
@@ -54,7 +59,6 @@ const ListTrekFeature: React.ComponentType<Props> = (
 
     useEffect(() => {
         if(loadData) {
-            console.log('and is here ?');
             axios
                 .get("http://localhost:1030/api/treks", {
                     params: {
@@ -70,8 +74,10 @@ const ListTrekFeature: React.ComponentType<Props> = (
     }, [loadData, dataToSend, setLoadData]);
 
     useEffect(() => {
-        setBody(generateListViewFunc(listData));
-    }, [listData, generateListViewFunc])
+        if(loadData) {
+            setBody(generateListViewFunc(listData));
+        }
+    }, [loadData, listData, generateListViewFunc])
 
     /*******************************************************************************************************************
      *                                          RENDER
