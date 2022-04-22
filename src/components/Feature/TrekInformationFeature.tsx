@@ -1,5 +1,5 @@
 import React, {ReactElement, useEffect, useState} from "react";
-import BadgeLevelElement from "../Elements/BadgeElement";
+import BadgeLevelElement from "../Elements/BadgeLevelElement";
 import ViewHourlyAbstract from "../Abstract/ViewHourlyAbstract";
 
 interface Props {

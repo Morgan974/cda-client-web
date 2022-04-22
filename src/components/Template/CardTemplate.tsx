@@ -1,5 +1,5 @@
 import React from "react";
-import BadgeLevelElement from "../Elements/BadgeElement";
+import BadgeLevelElement from "../Elements/BadgeLevelElement";
 import BtnMenueElement from "../Elements/BtnMenuelement";
 import PriceElement from "../Elements/PriceElement";
 import EditTrekFeature from "../Feature/EditTrekFeature";

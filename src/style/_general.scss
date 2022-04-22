@@ -1,0 +1,20 @@
+@use "./colors";
+
+@font-face {
+  font-family: Salsa;
+  src: local("Salsa Regular"),
+  local("Salsa-Regular"),
+  url(Salsa-Regular.ttf);
+}
+
+@font-face {
+  font-family: ReenieBeanie;
+  src: local("ReenieBeanie Regular"),
+  local("ReenieBeanie-Regular"),
+  url(ReenieBeanie-Regular.ttf);
+}
+
+// COLORS
+.color-black {
+  color : colors.$cod-gray !important;
+}

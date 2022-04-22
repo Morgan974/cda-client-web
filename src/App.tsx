@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./style/style.css";
+import "./style/style.scss";
 import { Routes, Route } from "react-router-dom";
 import ListGroupTrekPage from "./components/Page/ListGroupTrekPage";
 import ListTrekPage from "./components/Page/ListTrekPage";
