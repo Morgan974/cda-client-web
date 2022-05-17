@@ -1,1 +1,1 @@
-export const localAddress = "http://localhost:1030/api/treks/";
+export const AddressApi = "http://localhost:1030";

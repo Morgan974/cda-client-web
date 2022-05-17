@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import LabelAbstract from "../Abstract/LabelAbstract";
 import axios from "axios";
 import CheckboxAbstract from "../Abstract/CheckboxAbstract";
+import {AddressApi} from "../../config/CommonConst";
 
 interface Props {
     setElements : any;
@@ -33,7 +34,7 @@ const CheckboxSelectLevelFeature: React.ComponentType<Props> = ({
     useEffect(() => {
         if(loadData) {
             axios
-                .get("http://localhost:1030/api/levels")
+                .get( AddressApi + "/api/levels")
                 .then(response => {
                     setListElements(response.data);
                 });

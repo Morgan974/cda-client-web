@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import NavbarFeature from "../Feature/NavbarFeature";
 import axios from "axios";
-import {localAddress} from "../../config/CommonConst";
+import {AddressApi} from "../../config/CommonConst";
 import HeaderFeature from "../Feature/HeaderFeature";
 import TrekInformationFeature from "../Feature/TrekInformationFeature";
 import TrekDescriptionFeature from "../Feature/TrekDescriptionFeature";
@@ -40,7 +40,7 @@ const ViewTrekPage: React.ComponentType = () => {
     useEffect(() => {
         if(loadData) {
             axios
-                .get(localAddress + dataUrl.idEntity)
+                .get(AddressApi + "/api/treks/" + dataUrl.idEntity)
                 .then(response => {
                     setTrek(response.data);
                 });

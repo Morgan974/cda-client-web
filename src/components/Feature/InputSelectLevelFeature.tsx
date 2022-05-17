@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import SelectAbstract from "../Abstract/SelectAbstract";
 import LabelAbstract from "../Abstract/LabelAbstract";
 import axios from "axios";
+import {AddressApi} from "../../config/CommonConst";
 
 interface Props {
     element : string;
@@ -31,7 +32,7 @@ const InputSelectLevelFeature: React.ComponentType<Props> = ({
     useEffect(() => {
         if(loadData) {
             axios
-                .get("http://localhost:1030/api/levels")
+                .get(AddressApi + "/api/levels")
                 .then(response => {
                     setListElements(response.data);
                 });

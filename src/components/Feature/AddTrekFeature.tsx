@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from "react";
 import axios from "axios";
 import ModalElement from "../Elements/ModalElement";
+import {AddressApi} from "../../config/CommonConst";
 
 interface Props {
     setLoadData : (loadData : boolean) => void;
@@ -48,7 +49,7 @@ const AddTrekFeature: React.ComponentType<Props> = ({
 
         if (!haveError && dataToSend) {
             axios
-                .post("http://localhost:1030/api/trek", {
+                .post( AddressApi + "/api/trek", {
                     ...dataToSend
                 })
                 .then(response => {

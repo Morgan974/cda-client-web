@@ -1,6 +1,7 @@
 import React, {ReactElement, useCallback, useEffect, useState} from "react";
 import axios from 'axios';
 import CardTemplate from "../Template/CardTemplate";
+import {AddressApi} from "../../config/CommonConst";
 
 interface Props {
     dataToSend: any;
@@ -58,9 +59,10 @@ const ListTrekFeature: React.ComponentType<Props> = (
      ******************************************************************************************************************/
 
     useEffect(() => {
+        console.log(loadData);
         if(loadData) {
             axios
-                .get("http://localhost:1030/api/treks", {
+                .get(AddressApi + "/api/treks", {
                     params: {
                         isEnabled: true,
                         ...dataToSend
@@ -68,8 +70,8 @@ const ListTrekFeature: React.ComponentType<Props> = (
                 })
                 .then(response => {
                     setListData(response.data);
-                    setLoadData(false);
-                });
+                })
+                .then(() => setLoadData(false));
         }
     }, [loadData, dataToSend, setLoadData]);
 

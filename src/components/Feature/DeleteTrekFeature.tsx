@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from "react";
 import axios from "axios";
 import ModalRemoveElement from "../Elements/ModalRemoveElement";
+import {AddressApi} from "../../config/CommonConst";
 
 interface Props {
     trek: any;
@@ -32,12 +33,13 @@ const DeleteTrekFeature: React.ComponentType<Props> = ({
 
     const handleRemove = useCallback((e : any) => {
         axios
-            .delete("http://localhost:1030/api/trek/" + idTrek)
+            .delete(AddressApi +  "/api/trek/" + idTrek)
             .then(response => {
                 console.log(response);
+                setLoadData(true);
             });
         handleClose()
-    }, [idTrek, handleClose]);
+    }, [idTrek, handleClose, setLoadData]);
 
     /*******************************************************************************************************************
      *                                          effect
