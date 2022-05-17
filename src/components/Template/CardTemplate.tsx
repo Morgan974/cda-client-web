@@ -43,7 +43,7 @@ const CardTemplate: React.ComponentType<Props> = (
                     <div className="col-md-12 text-center color-black fs-24px pb-4">
                         {parameters.distance} km - <ViewHourlyAbstract hours={parameters.duration} />
                     </div>
-                    <div className="col-md-12 pb-3">
+                    <div className="col-md-12 pb-3 h-300">
                         {parameters.description}
                     </div>
                 </div>

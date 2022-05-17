@@ -1,5 +1,6 @@
 import React, {useCallback, useState} from "react";
 import axios from "axios";
+import {AddressApi} from "../config/CommonConst";
 
 export const templateWebservice = () => (
     route : string,
@@ -10,7 +11,7 @@ export const templateWebservice = () => (
 ) => {
     if (methode === "post") {
         axios
-            .post("http://localhost:1030/api/" + route, {
+            .post(AddressApi + "/api/" + route, {
                 ...dataToSend
             })
             .then(response => {
@@ -19,7 +20,7 @@ export const templateWebservice = () => (
     }
     if (methode === "post") {
         axios
-            .post("http://localhost:1030/api/" + route, {
+            .post(AddressApi + "/api/" + route, {
                 ...dataToSend
             })
             .then(response => {

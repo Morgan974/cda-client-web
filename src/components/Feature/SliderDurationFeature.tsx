@@ -5,6 +5,7 @@ import LabelAbstract from "../Abstract/LabelAbstract";
 import {useCallback, useEffect} from "react";
 import axios from "axios";
 import ViewHourlyAbstract from "../Abstract/ViewHourlyAbstract";
+import {AddressApi} from "../../config/CommonConst";
 
 interface Props {
     setElements: any;
@@ -62,7 +63,7 @@ const SliderDurationFeature: React.ComponentType<Props> = ({
     useEffect(() => {
         if(loadData) {
             axios
-                .get("http://localhost:1030/api/duration")
+                .get(AddressApi + "/api/duration")
                 .then(response => {
                     setDurationMax(response.data.maxDuration);
                     setDurationMin(response.data.minDuration);

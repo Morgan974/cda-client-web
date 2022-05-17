@@ -4,6 +4,7 @@ import Slider from '@mui/material/Slider';
 import LabelAbstract from "../Abstract/LabelAbstract";
 import {useCallback, useEffect} from "react";
 import axios from "axios";
+import {AddressApi} from "../../config/CommonConst";
 
 interface Props {
     setElements: any;
@@ -61,7 +62,7 @@ const SliderPriceFeature: React.ComponentType<Props> = ({
     useEffect(() => {
         if(loadData) {
             axios
-                .get("http://localhost:1030/api/prices")
+                .get(AddressApi + "/api/prices")
                 .then(response => {
                     setPriceMax(response.data.maxPrice);
                     setPriceMin(response.data.minPrice);

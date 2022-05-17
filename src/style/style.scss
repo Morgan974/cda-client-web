@@ -34,7 +34,7 @@
         }
     }
 
-    a {
+    a, button {
         color: colors.$sangria;
         text-decoration: none;
     }
@@ -356,4 +356,12 @@ select {
 .alert-danger {
     background: #9B0000;
     color : #EAE7DC;
+}
+
+.h-300 {
+    height: 300px;
+}
+
+.height-full {
+    height: 100vh;
 }
