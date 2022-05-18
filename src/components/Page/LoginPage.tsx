@@ -3,7 +3,15 @@ import NavbarFeature from "../Feature/NavbarFeature";
 import HeaderFeature from "../Feature/HeaderFeature";
 import AuthApi from "../../tools/AuthApi";
 
-const LoginPage: React.ComponentType = () => {
+interface Props {
+    isAuthenticated : boolean;
+    setIsAuthenticated: (isAuthenticated : boolean) => void;
+}
+
+const LoginPage: React.ComponentType<Props> = ({
+    isAuthenticated,
+    setIsAuthenticated
+}) => {
 
     const [credentials, setCredentials] = useState({
         username: '',
@@ -14,18 +22,20 @@ const LoginPage: React.ComponentType = () => {
 
     const handleChange = ({currentTarget} : any) => {
         const {value, name} = currentTarget;
-
         setCredentials({...credentials, [name]: value})
     }
 
     const handleSubmit = async (event : any) => {
         event.preventDefault();
-        await AuthApi.authenticate(credentials, setError);
+        await AuthApi.authenticate(credentials, setError, setIsAuthenticated);
     }
 
     return (
         <div className="body-layout w-100 height-full">
-            <NavbarFeature />
+            <NavbarFeature
+                isAuthenticated={isAuthenticated}
+                setIsAuthenticated={setIsAuthenticated}
+            />
             <HeaderFeature />
             <div className="p-5 color-black">
                 <div className="fs-24px">Connexion à l'application</div>

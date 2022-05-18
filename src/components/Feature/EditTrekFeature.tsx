@@ -37,7 +37,6 @@ const EditTrekFeature: React.ComponentType<Props> = ({
 
         for (const [key, value] of Object.entries(dataToSend)) {
             const element = document.getElementById(key + "-input-alert");
-            console.log(key, value);
             if(value === undefined || !value) {
                 if (element) {
                     element.innerHTML = "Ce champs ne peut être null et doit être renseigné";
@@ -58,7 +57,6 @@ const EditTrekFeature: React.ComponentType<Props> = ({
                     ...dataToSend
                 })
                 .then(response => {
-                    console.log(response.data);
                     setLoadData(false);
                 });
             handleClose()

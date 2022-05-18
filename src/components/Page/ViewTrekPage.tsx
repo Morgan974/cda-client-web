@@ -6,7 +6,15 @@ import HeaderFeature from "../Feature/HeaderFeature";
 import TrekInformationFeature from "../Feature/TrekInformationFeature";
 import TrekDescriptionFeature from "../Feature/TrekDescriptionFeature";
 
-const ViewTrekPage: React.ComponentType = () => {
+interface Props {
+    isAuthenticated : boolean;
+    setIsAuthenticated: (isAuthenticated : boolean) => void;
+}
+
+const ViewTrekPage: React.ComponentType<Props> = ({
+   isAuthenticated,
+   setIsAuthenticated
+}) => {
 
     const formatPageHref = useCallback((url) => {
         let urlSeparate = url.replace('http://localhost:3000/', '');
@@ -54,7 +62,10 @@ const ViewTrekPage: React.ComponentType = () => {
 
     return (
         <div className="body-layout">
-            <NavbarFeature />
+            <NavbarFeature
+                isAuthenticated={isAuthenticated}
+                setIsAuthenticated={setIsAuthenticated}
+            />
             <HeaderFeature />
             <TrekInformationFeature
                 trek={trek}

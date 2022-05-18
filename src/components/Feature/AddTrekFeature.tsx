@@ -32,7 +32,6 @@ const AddTrekFeature: React.ComponentType<Props> = ({
 
         for (const [key, value] of Object.entries(dataToSend)) {
             const element = document.getElementById(key + "-input-alert");
-            console.log(key, value);
             if(value === undefined || !value) {
                 if (element) {
                     element.innerHTML = "Ce champs ne peut être null et doit être renseigné";
@@ -52,9 +51,7 @@ const AddTrekFeature: React.ComponentType<Props> = ({
                 .post( AddressApi + "/api/trek", {
                     ...dataToSend
                 })
-                .then(response => {
-                    console.log(response.data);
-                });
+                .then(response => {});
             handleClose();
         }
     }, [dataToSend, handleClose]);

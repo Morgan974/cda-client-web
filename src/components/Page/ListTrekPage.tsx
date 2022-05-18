@@ -5,8 +5,15 @@ import FeatureTemplate from "../Template/FeatureTemplate";
 import ListTrekFeature from "../Feature/ListTrekFeature";
 import SearchListTrekFeature from "../Feature/SearchListTrekFeature";
 
-const ListTrekPage: React.ComponentType = () => {
+interface Props {
+    isAuthenticated : boolean;
+    setIsAuthenticated: (isAuthenticated : boolean) => void;
+}
 
+const ListTrekPage: React.ComponentType<Props> = ({
+   isAuthenticated,
+   setIsAuthenticated
+}) => {
     /*******************************************************************************************************************
      *                                          STATE
      ******************************************************************************************************************/
@@ -26,7 +33,10 @@ const ListTrekPage: React.ComponentType = () => {
     useEffect(() => {
         setBody(
             <div className="body-layout">
-                <NavbarFeature />
+                <NavbarFeature
+                    isAuthenticated={isAuthenticated}
+                    setIsAuthenticated={setIsAuthenticated}
+                />
                 <HeaderFeature />
                 <FeatureTemplate
                     leftComponent={
@@ -46,7 +56,7 @@ const ListTrekPage: React.ComponentType = () => {
                 />
             </div>
         )
-    }, [dataToSend, loadData]);
+    }, [isAuthenticated, setIsAuthenticated, dataToSend, loadData]);
 
     /*******************************************************************************************************************
      *                                          RENDER
