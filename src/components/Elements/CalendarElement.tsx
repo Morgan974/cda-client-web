@@ -12,7 +12,7 @@ const CalendarElement : React.ComponentType<Props> = (
         new Date(2022, 4, 28),
         new Date(2022, 4, 20),
         new Date(2022, 4, 25),
-        new Date(2022, 4, 23),
+        new Date(2022, 4, 23)
     ];
 
     const handleBooking = (event : any) => {

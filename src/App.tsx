@@ -11,6 +11,7 @@ import AuthApi from "./tools/AuthApi";
 import {useState} from "react";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import RegisterPage from "./components/Page/RegisterPage";
 
 AuthApi.setup();
 
@@ -45,6 +46,12 @@ function App() {
             } />
             <Route path="/login" element={
                 <LoginPage
+                    isAuthenticated={isAuthenticated}
+                    setIsAuthenticated={setIsAuthenticated}
+                />
+            } />
+            <Route path="/register" element={
+                <RegisterPage
                     isAuthenticated={isAuthenticated}
                     setIsAuthenticated={setIsAuthenticated}
                 />
