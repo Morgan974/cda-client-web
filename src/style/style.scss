@@ -81,10 +81,6 @@ $bg-img: url('../img/backgroundheader.jpg');
     padding: 25px;
 }
 
-.text-error {
-    font-size: 40px;
-}
-
 .page-error{
     height: 100vh;
     display: flex;
@@ -363,7 +359,7 @@ select {
 }
 
 .height-full {
-    height: 100vh;
+    padding-bottom: 50px;
 }
 
 .react-calendar {
@@ -377,4 +373,10 @@ select {
     &__month-view__weekdays__weekday {
         color: black;
     }
+}
+
+.text-error {
+    color: darkred;
+    margin: 0;
+    padding: 0;
 }

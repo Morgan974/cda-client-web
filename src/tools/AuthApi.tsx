@@ -47,6 +47,17 @@ function authenticate(credentials : any, setError : Function, setIsAuthenticated
     ;
 }
 
+function register(data : any, setEmailExist : Function) {
+    axios
+        .post(AddressApi + "/api/users", data)
+        .then(response => console.log(response.data))
+        .catch(error => {
+            console.log(error.response.status == 422);
+            setEmailExist(true);
+        })
+    ;
+}
+
 function isAuthenticated() {
     const token = window.localStorage.getItem("authToken");
 
@@ -75,4 +86,4 @@ function isAdmin() {
     }
 }
 
-export default {authenticate, logout, setup, isAuthenticated, isAdmin};
+export default {authenticate, logout, setup, isAuthenticated, isAdmin, register};

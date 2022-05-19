@@ -29,7 +29,7 @@ const UserMenuFeature: React.ComponentType<Props> = ({
                     <BtnMenueElement
                         className="col-md-6"
                         nameMenu={<>S'enregister</>}
-                        path={"/login"}
+                        path={"/register"}
                     />
                     <BtnMenueElement
                         className="col-md-6"
