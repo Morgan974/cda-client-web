@@ -5,6 +5,7 @@ import {AddressApi} from "../../config/CommonConst";
 import HeaderFeature from "../Feature/HeaderFeature";
 import TrekInformationFeature from "../Feature/TrekInformationFeature";
 import TrekDescriptionFeature from "../Feature/TrekDescriptionFeature";
+import CalendarElement from "../Elements/CalendarElement";
 
 interface Props {
     isAuthenticated : boolean;
@@ -61,7 +62,7 @@ const ViewTrekPage: React.ComponentType<Props> = ({
      ******************************************************************************************************************/
 
     return (
-        <div className="body-layout">
+        <div className="body-layout pb-5">
             <NavbarFeature
                 isAuthenticated={isAuthenticated}
                 setIsAuthenticated={setIsAuthenticated}
@@ -74,6 +75,9 @@ const ViewTrekPage: React.ComponentType<Props> = ({
                 <TrekDescriptionFeature
                     description={trek.description}
                 />
+            </div>
+            <div className="row m-4">
+                <CalendarElement />
             </div>
         </div>
     );
