@@ -25,9 +25,11 @@ function setup() {
 }
 
 function logout() {
-    window.localStorage.removeItem("authToken");
-    delete axios.defaults.headers.common['Authorization'];
-    toast.info("Vous êtes désormais déconnecté !");
+    if(window.localStorage.getItem("authToken")) {
+        window.localStorage.removeItem("authToken");
+        delete axios.defaults.headers.common['Authorization'];
+        toast.info("Vous êtes désormais déconnecté !");
+    }
 }
 
 function authenticate(credentials : any, setError : Function, setIsAuthenticated : Function) {
@@ -50,9 +52,13 @@ function authenticate(credentials : any, setError : Function, setIsAuthenticated
 function register(data : any, setEmailExist : Function) {
     axios
         .post(AddressApi + "/api/users", data)
-        .then(response => console.log(response.data))
+        .then(response => {
+            console.log(response.data);
+            window.location.href = '/login';
+            toast.success("Votre compte a été crée ! VOus pouvez maintenant vous connecter !");
+        })
         .catch(error => {
-            console.log(error.response.status == 422);
+            console.log(error.response.status === 422);
             setEmailExist(true);
         })
     ;

@@ -115,7 +115,7 @@ const RegisterPage: React.ComponentType<Props> = ({
         if(!haveErrors && isSubmit) {
             AuthApi.register(datas, setEmailExist);
         }
-    }, [errors, isSubmit]);
+    }, [haveErrors, datas, isSubmit]);
 
     return (
         <div className="body-layout w-100 height-full">
