@@ -77,7 +77,9 @@ const ViewTrekPage: React.ComponentType<Props> = ({
                 />
             </div>
             <div className="row m-4">
-                <CalendarElement />
+                <CalendarElement
+                    idTrek={trek.id}
+                />
             </div>
         </div>
     );
